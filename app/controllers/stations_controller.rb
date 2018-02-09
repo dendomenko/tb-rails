@@ -5,58 +5,43 @@ class StationsController < ApplicationController
     @stations = Station.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @station = Station.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
-    @_station = Station.new(station_params)
-
-    respond_to do |format|
-      if @station.save
-        format.html { redirect_to @station, notice: 'Railway station was successfully created.' }
-        format.json { render :show, status: :created, location: @station }
-      else
-        format.html { render :new }
-        format.json { render json: @station.errors, status: :unprocessable_entity }
-      end
+    @station = Station.new(station_params)
+    if @station.save
+      redirect_to @station, notice: 'Railway station was successfully created.'
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @station.update(station_params)
-        format.html { redirect_to @station, notice: 'Railway station was successfully updated.' }
-        format.json { render :show, status: :ok, location: @station }
-      else
-        format.html { render :edit }
-        format.json { render json: @station.errors, status: :unprocessable_entity }
-      end
+    if @station.update(station_params)
+      redirect_to @station, notice: 'Railway station was successfully updated.'
+    else
+      render :edit
     end
   end
 
   def destroy
     @station.destroy
-    respond_to do |format|
-      format.html { redirect_to stations_url, notice: 'Railway station was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to stations_url, notice: 'Railway station was successfully destroyed.'
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_station
-      @station = Station.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def station_params
-      params.require(:station).permit(:name)
-    end
+  def set_station
+    @station = Station.find(params[:id])
+  end
+
+  def station_params
+    params.require(:station).permit(:name)
+  end
 end
