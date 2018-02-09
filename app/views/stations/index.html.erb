@@ -11,14 +11,7 @@
   </thead>
 
   <tbody>
-    <% @stations.each do |station| %>
-      <tr>
-        <td><%= station.name %></td>
-        <td><%= link_to 'Show', station %></td>
-        <td><%= link_to 'Edit', edit_station_path(station) %></td>
-        <td><%= link_to 'Destroy', station, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+      <%= render @stations %>
   </tbody>
 </table>
 
