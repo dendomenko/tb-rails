@@ -13,14 +13,21 @@ class RoutesController < ApplicationController
 
   def create
     @route = Route.new(route_params)
-    redirect_to @route, notice: 'Route was  created.' if @route.save
+    if @route.save
+      redirect_to @route, notice: 'Route was  created.'
+    else
+      render :new
+    end
   end
 
   def edit; end
 
   def update
-    redirect_to @route, notice: 'Route was updated' if @route
-                                                       .update(route_params)
+    if @route.update(route_params)
+      redirect_to @route, notice: 'Route was updated'
+    else
+      render :edit
+    end
   end
 
   def destroy

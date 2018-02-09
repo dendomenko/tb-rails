@@ -1,10 +1,10 @@
-<%= form_with(model: railway_station, local: true) do |form| %>
-  <% if railway_station.errors.any? %>
+<%= form_with(model: station, local: true) do |form| %>
+  <% if station.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(railway_station.errors.count, "error") %> prohibited this railway_station from being saved:</h2>
+      <h2><%= pluralize(station.errors.count, "error") %> prohibited this station from being saved:</h2>
 
       <ul>
-      <% railway_station.errors.full_messages.each do |message| %>
+      <% station.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :railway_station_title %>
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :station_name %>
   </div>
 
   <div class="actions">
