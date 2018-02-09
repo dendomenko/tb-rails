@@ -3,6 +3,9 @@
   <div class="field">
     <%= form.label :number %>
     <%= form.text_field :number, id: :train_number %>
+
+    <%= form.label :route_id %>
+    <%= form.collection_select(:route_id, Route.all, :id, :name, :prompt => 'Select') %>
   </div>
 
   <div class="actions">
