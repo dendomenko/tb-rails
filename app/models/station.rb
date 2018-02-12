@@ -5,9 +5,9 @@ class Station < ApplicationRecord
 
   validates :name, presence: true
 
-  scope :order_by_number, lambda do
+  scope :order_by_number, lambda {
     select('stations.*, stations_routes.number')
       .joins(:stations_routes)
       .order('stations_routes.number').uniq
-  end
+  }
 end

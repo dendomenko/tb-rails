@@ -4,7 +4,7 @@
 
   <div class="field">
     <%= f.label :type %><br>
-    <%= f.select :type, ['EconomCarriage', 'CoupeCarriage', 'SedentaryCarriage', 'SleepCarriage'].map {|r| [r.underscore.humanize, r.camelcase]} %> 
+    <%= f.select :type, Carriage.types.map {|r| [r.underscore.humanize, r.camelcase]} %> 
   </div>
 
 
