@@ -1,0 +1,2 @@
+class Coupe < Carriage
+end
