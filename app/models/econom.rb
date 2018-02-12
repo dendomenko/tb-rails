@@ -1,2 +1,0 @@
-class Econom < Carriage
-end

@@ -1,0 +1,1 @@
+class SleepCarriage < Carriage; end
