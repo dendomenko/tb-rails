@@ -1,0 +1,1 @@
+class SedentaryCarriage < Carriage; end

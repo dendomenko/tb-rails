@@ -15,14 +15,22 @@
   <strong>Carriages:</strong>
   <% if @train.carriages.present? %>
     <p> <strong>Econom carriages:</strong> <%= @train.carriages.economs.count %> </p>
-    <p> Top seats: <%= @train.econom_seats :top_seats %> </p>
-    <p> Bottom seats: <%= @train.econom_seats :bottom_seats %> </p>         
+    <p> Top seats: <%= @train.count_seats('EconomCarriage', :top_seats) %> </p>
+    <p> Bottom seats: <%= @train.count_seats('EconomCarriage', :bottom_seats) %> </p>  
+    <p> Top side seats: <%= @train.count_seats('EconomCarriage', :side_top_seats) %> </p>    
+    <p> Bottom side seats: <%= @train.count_seats('EconomCarriage', :side_bottom_seats) %> </p>          
     <p> <strong>Coupe carriages:</strong> <%= @train.carriages.coupes.count %> </p>
-    <p> Top seats: <%= @train.coupe_seats :top_seats %> </p>   
-    <p> Bottom seats: <%= @train.coupe_seats :bottom_seats %> </p>    
+    <p> Top seats: <%= @train.count_seats('CoupeCarriage', :top_seats) %> </p>   
+    <p> Bottom seats: <%= @train.count_seats('CoupeCarriage', :bottom_seats) %> </p>     
   <% else %>
     No carriages
   <% end %>
 </p>
+
+<ul> Carriages list
+  <% @train.carriages.order_by_tail(@train.tail).each do |car| %>
+  <li> <%= link_to car.number, car %> </li>
+  <% end %>
+</ul>
 <%= link_to 'Edit', edit_train_path(@train) %> |
 <%= link_to 'Back', trains_path %>

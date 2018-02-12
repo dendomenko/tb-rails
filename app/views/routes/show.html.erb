@@ -18,5 +18,18 @@
   <% end %>
 </p>
 
+<p>
+  <strong>Stations</strong>
+  <% if @route.stations.present? %>
+    <ul>
+      <% @route.stations.order_by_number.each do |station|%>
+        <li><%= link_to station.name, station %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    No stations
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_route_path(@route) %> |
 <%= link_to 'Back', routes_path %>
