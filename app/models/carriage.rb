@@ -9,6 +9,9 @@ class Carriage < ApplicationRecord
   scope :coupes, -> { where(type: 'CoupeCarriage') }
   scope :economs, -> { where(type: 'EconomCarriage') }
 
+  scope :order_by_tail, ->(tail) { order(number: tail ? :desc : :asc) }
+  scope :order_by_number, -> { select('stations.*, stations_routes.number').joins(:stations_routes).order('stations_routes.number').uniq }
+
   private
 
   def set_number

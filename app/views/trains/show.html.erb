@@ -26,7 +26,7 @@
 </p>
 
 <ul> Carriages list
-  <% @train.carriages.each do |car| %>
+  <% @train.carriages.order_by_tail(@train.tail).each do |car| %>
   <li> <%= link_to car.number, car %> </li>
   <% end %>
 </ul>
