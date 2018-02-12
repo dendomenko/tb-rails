@@ -7,6 +7,11 @@
     <%= form.text_field :name %>
   </div>
 
+  <div class="field">
+    <%= form.label :station_ids, "Station list" %>
+    <%= form.collection_select :station_ids, Station.all, :id, :name, { include_hidden: false }, { multiple: true } %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
