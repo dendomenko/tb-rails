@@ -2,6 +2,7 @@ class CarriagesController < ApplicationController
   before_action :set_carriage, only: [:show]
 
   def new
+    @train = Train.find(params[:train_id])
     @carriage = Carriage.new
   end
 

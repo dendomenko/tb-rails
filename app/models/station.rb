@@ -6,8 +6,22 @@ class Station < ApplicationRecord
   validates :name, presence: true
 
   scope :order_by_number, lambda {
-    select('stations.*, stations_routes.number')
-      .joins(:stations_routes)
+    joins(:stations_routes)
       .order('stations_routes.number').uniq
   }
+
+  def update_position(route, number)
+    station_route = station_route(route)
+    station_route&.update(number: number)
+  end
+
+  def position_in(route)
+    station_route(route).try(:number)
+  end
+
+  protected
+
+  def station_route(route)
+    @station_route ||= stations_routes.where(route: route).first
+  end
 end
