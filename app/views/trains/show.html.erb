@@ -24,5 +24,11 @@
     No carriages
   <% end %>
 </p>
+
+<ul> Carriages list
+  <% @train.carriages.each do |car| %>
+  <li> <%= link_to car.number, car %> </li>
+  <% end %>
+</ul>
 <%= link_to 'Edit', edit_train_path(@train) %> |
 <%= link_to 'Back', trains_path %>

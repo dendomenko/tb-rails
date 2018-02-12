@@ -1,4 +1,6 @@
 class CarriagesController < ApplicationController
+  before_action :set_carriage, only: [:show]
+
   def new
     @carriage = Carriage.new
   end
@@ -12,7 +14,15 @@ class CarriagesController < ApplicationController
     end
   end
 
+  def show
+
+  end
+
   private
+
+  def set_carriage
+    @carriage = Carriage.find(params[:id])
+  end
 
   def carriage_params
     params.require(:carriage).permit(:type, :top_seats, :bottom_seats, :train_id, :side_top_seats, :side_bottom_seats)
