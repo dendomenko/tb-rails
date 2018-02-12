@@ -10,13 +10,15 @@ class Station < ApplicationRecord
       .order('stations_routes.number').uniq
   }
 
-  def update_position(route, number)
+  def update_number(route, number, arrival_time, departure_time)
     station_route = station_route(route)
-    station_route&.update(number: number)
+    station_route&.update(number: number,
+                          arrival_time: arrival_time,
+                          departure_time: departure_time)
   end
 
-  def position_in(route)
-    station_route(route).try(:number)
+  def route_data(route, data)
+    station_route(route).try(data)
   end
 
   protected

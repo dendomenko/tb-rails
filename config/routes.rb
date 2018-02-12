@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :sleep_carriage, controller: 'carriages', type: 'SleepCarriage', only: [:create, :new, :show]
   end
   resources :stations do
-    patch :update_position, on: :member
+    patch :update_number, on: :member
   end
   resources :routes
 end
