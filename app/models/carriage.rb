@@ -10,7 +10,10 @@ class Carriage < ApplicationRecord
   scope :economs, -> { where(type: 'EconomCarriage') }
 
   scope :order_by_tail, ->(tail) { order(number: tail ? :desc : :asc) }
-  scope :order_by_number, -> { select('stations.*, stations_routes.number').joins(:stations_routes).order('stations_routes.number').uniq }
+  scope :order_by_number, lambda do 
+    select('stations.*, stations_routes.number')
+      .joins(:stations_routes).order('stations_routes.number').uniq
+  end
 
   private
 
