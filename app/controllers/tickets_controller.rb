@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show]
   before_action :set_train, only: %i[new create]

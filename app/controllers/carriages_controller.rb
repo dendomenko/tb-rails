@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CarriagesController < ApplicationController
   before_action :set_carriage, only: [:show]
   before_action :set_train, only: %i[new create]

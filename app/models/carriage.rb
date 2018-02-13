@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Carriage < ApplicationRecord
   belongs_to :train
 

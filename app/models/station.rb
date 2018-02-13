@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
 class Station < ApplicationRecord
   has_many :stations_routes, dependent: :destroy
   has_many :routes, through: :stations_routes
-  has_many :trains, inverse_of: :current_station, foreign_key: 'current_station_id'
+  has_many :trains, inverse_of: :current_station,
+                    foreign_key: 'current_station_id'
 
   validates :name, presence: true
 

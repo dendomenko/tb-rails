@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TrainsController < ApplicationController
   before_action :set_train, only: %i[show edit update destroy]
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Route < ApplicationRecord
   has_many :trains
   has_many :stations_routes, dependent: :destroy
@@ -12,7 +14,7 @@ class Route < ApplicationRecord
     stations.first
   end
 
-  scope :find_by_stations, ->(start_station_id, end_station_id) {
+  scope :find_by_stations, lambda { |start_station_id, end_station_id|
     route_ids = joins(:stations_routes)
                 .where(['stations_routes.station_id = ? ', start_station_id])
                 .pluck(:route_id)
