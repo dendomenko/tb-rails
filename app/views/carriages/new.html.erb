@@ -7,12 +7,6 @@
     <%= f.select :type, Carriage.types.map {|r| [r.underscore.humanize, r.camelcase]} %> 
   </div>
 
-
-  <div class="field">
-    <%= f.label :train_id %><br>
-    <%= f.collection_select(:train_id, Train.all, :id, :number, :prompt => 'Select') %>
-  </div>
-
   <div class="field">
     <%= f.label :top_seats %><br>
     <%= f.number_field :top_seats %>
