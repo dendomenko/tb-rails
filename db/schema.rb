@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180212160201) do
+ActiveRecord::Schema.define(version: 20180213144306) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,10 @@ ActiveRecord::Schema.define(version: 20180212160201) do
     t.bigint "user_id"
     t.bigint "start_station_id"
     t.bigint "end_station_id"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "middle_name"
+    t.string "passport"
     t.index ["end_station_id"], name: "index_tickets_on_end_station_id"
     t.index ["start_station_id"], name: "index_tickets_on_start_station_id"
     t.index ["train_id"], name: "index_tickets_on_train_id"

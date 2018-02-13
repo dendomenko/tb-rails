@@ -1,9 +1,8 @@
 class CarriagesController < ApplicationController
   before_action :set_carriage, only: [:show]
   before_action :set_train, only: %i[new create]
-  
+
   def new
-    @train = Train.find(params[:train_id])
     @carriage = Carriage.new
   end
 

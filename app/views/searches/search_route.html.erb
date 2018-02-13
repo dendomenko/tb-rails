@@ -10,20 +10,20 @@
         </tr>
       </thead>
       <tbody>
-  <% @routes.each do |route| %>
-    <% route.trains.each do |train| %>
-
-
-        <tr>
-          <td><%= train.number %></td>
-          <td><%= @start_station.route_data(route, :departure_time) %></td>
-          <td><%= @end_station.route_data(route, :arrival_time ) %></td>
-          <td><%= %></td>
-        </tr> 
-    <% end %>  
-  <% end %>
+        <% @routes.each do |route| %>
+          <% route.trains.each do |train| %>
+              <tr>
+                <td><%= train.number %></td>
+                <td><%= @start_station.route_data(route, :departure_time) %></td>
+                <td><%= @end_station.route_data(route, :arrival_time ) %></td>
+                <td><%= link_to "Buy ticket", new_train_ticket_path(train, start: @start_station.id, end: @end_station.id) %></td>
+              </tr> 
+          <% end %>  
+        <% end %>
       </tbody>
     </table> 
 <% else %>
   <h2> Nothing found </h2>
 <% end %>
+
+<% #  %>

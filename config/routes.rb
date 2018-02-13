@@ -13,10 +13,14 @@ Rails.application.routes.draw do
     resources :sleep_carriage, controller: 'carriages',
                                type: 'SleepCarriage',
                                only: %i[create new show]
+
+    resources :tickets, only: %i[create new show]
   end
+
   resources :stations do
     patch :update_number, on: :member
   end
+
   resources :routes
 
   resource :search, only: :show do 
