@@ -6,7 +6,8 @@ class Station < ApplicationRecord
   validates :name, presence: true
 
   scope :order_by_number, lambda {
-    joins(:stations_routes)
+    select('stations.*, stations_routes.number')
+      .joins(:stations_routes)
       .order('stations_routes.number').uniq
   }
 
@@ -18,7 +19,9 @@ class Station < ApplicationRecord
   end
 
   def route_data(route, data)
-    station_route(route).try(data)
+    field = station_route(route).try(data)
+    return field.strftime "%H:%M" if field.is_a? Time
+    field
   end
 
   protected

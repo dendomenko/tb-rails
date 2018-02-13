@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema.define(version: 20180212160201) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "carriages", force: :cascade do |t|
     t.string "type"
     t.integer "top_seats"
     t.integer "bottom_seats"
-    t.integer "train_id"
+    t.bigint "train_id"
     t.integer "side_top_seats"
     t.integer "side_bottom_seats"
     t.integer "number"
@@ -42,10 +45,10 @@ ActiveRecord::Schema.define(version: 20180212160201) do
   create_table "tickets", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "train_id"
-    t.integer "user_id"
-    t.integer "start_station_id"
-    t.integer "end_station_id"
+    t.bigint "train_id"
+    t.bigint "user_id"
+    t.bigint "start_station_id"
+    t.bigint "end_station_id"
     t.index ["end_station_id"], name: "index_tickets_on_end_station_id"
     t.index ["start_station_id"], name: "index_tickets_on_start_station_id"
     t.index ["train_id"], name: "index_tickets_on_train_id"
@@ -56,8 +59,8 @@ ActiveRecord::Schema.define(version: 20180212160201) do
     t.string "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "current_station_id"
-    t.integer "route_id"
+    t.bigint "current_station_id"
+    t.bigint "route_id"
     t.boolean "tail", default: false
     t.index ["current_station_id"], name: "index_trains_on_current_station_id"
     t.index ["route_id"], name: "index_trains_on_route_id"
@@ -70,4 +73,11 @@ ActiveRecord::Schema.define(version: 20180212160201) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "carriages", "trains"
+  add_foreign_key "tickets", "stations", column: "end_station_id"
+  add_foreign_key "tickets", "stations", column: "start_station_id"
+  add_foreign_key "tickets", "trains"
+  add_foreign_key "tickets", "users"
+  add_foreign_key "trains", "routes"
+  add_foreign_key "trains", "stations", column: "current_station_id"
 end
