@@ -15,7 +15,7 @@ class RoutesController < ApplicationController
 
   def create
     @route = Route.new(route_params)
-    if @route.save!
+    if @route.save
       redirect_to @route, notice: 'Route was created.'
     else
       render :new
