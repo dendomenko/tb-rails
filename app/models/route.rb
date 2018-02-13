@@ -8,6 +8,10 @@ class Route < ApplicationRecord
 
   before_validation :set_name
 
+  def first_station
+    stations.first
+  end
+
   private
 
   def set_name

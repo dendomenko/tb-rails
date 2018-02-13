@@ -20,7 +20,7 @@ class Station < ApplicationRecord
 
   def route_data(route, data)
     field = station_route(route).try(data)
-    return field.strftime "%H:%M" if field.is_a? Time
+    return field.strftime '%H:%M' if field.is_a? Time
     field
   end
 
