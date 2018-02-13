@@ -33,17 +33,16 @@
       <tbody>
       <% @route.stations.order_by_number.each do |station| %>
           <tr>
-            <td><%= station.name %></td>
-            <%= form_tag update_number_station_path(station), method: :patch do %>            
+          <%= form_tag update_number_station_path(station), method: :patch do %>   
+            <td><%= station.name %></td>                     
             <td>              
               <%= number_field_tag :number, station.route_data(@route, :number) %>
-              <%= hidden_field_tag :route_id, @route.id %>
-                          
+              <%= hidden_field_tag :route_id, @route.id %>    
             </td>
             <td> <%= time_field_tag :arrival_time, station.route_data(@route, :arrival_time) %> </td>
             <td> <%= time_field_tag :departure_time, station.route_data(@route, :departure_time) %> </td>
             <td> <%= submit_tag "Change" %>  </td>
-            <% end %>
+          <% end %>          
           </tr>
       <% end %>
       </tbody>
