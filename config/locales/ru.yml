@@ -21,3 +21,9 @@ ru:
         title: 'Новый поезд'
       form:
         submit: '%{action} поезд'
+  menu:
+    new_article: "Добавить статью"
+    languages:
+      lang: "Язык"
+      ru: "Русский"
+      en: "Английский"

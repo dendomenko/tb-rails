@@ -1,14 +1,16 @@
 <%= form_for [:admin, @train] do |form| %>
 <%= render 'common/errors', resource: @train %>
-  <div class="field">
+  <div class="form-group">
     <%= form.label :number %>
-    <%= form.text_field :number, id: :train_number %>
-
-    <%= form.label :tail %>
-    <%= form.check_box :tail %>
-
+    <%= form.text_field :number, class: 'form-control' %>
+  </div>
+  <div class="form-check">
+    <%= form.check_box :tail, class: 'form-check-input' %>
+    <%= form.label :tail, class: 'form-check-label' %>
+  </div>
+  <div class="form-group">
     <%= form.label :route_id %>
-    <%= form.collection_select(:route_id, Route.all, :id, :name, :prompt => 'Select') %>
+    <%= form.collection_select :route_id, Route.all, :id, :name, {}, {class: 'form-control'} %>
   </div>
 
   <div class="actions">

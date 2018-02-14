@@ -1,21 +1,23 @@
-<table border="1">
-   <caption>Carriage info</caption>
-   <tr>
-    <th>Type</th>
-    <th>Number</th>
-    <th>Bottom seats</th>
-    <th>Top seats</th>
-    <th>Side bottom seats</th>
-    <th>Side top seats</th>
-   </tr>
-   <tbody>
+<div class="container">
+  <h1 class="text-center">Carriage info</h1>
+  <table class="table table-bordered">
     <tr>
-      <td><%= @carriage.type.underscore.humanize %></td>
-      <td><%= @carriage.number %></td>
-      <td><%= @carriage.top_seats %></td>
-      <td><%= @carriage.bottom_seats %></td>
-      <td><%= @carriage.side_top_seats %></td>
-      <td><%= @carriage.side_bottom_seats %></td>
+      <th>Type</th>
+      <th>Number</th>
+      <th>Bottom seats</th>
+      <th>Top seats</th>
+      <th>Side bottom seats</th>
+      <th>Side top seats</th>
     </tr>
-   </tbody>
-</table>
+    <tbody>
+      <tr>
+        <td><%= @carriage.type.underscore.humanize %></td>
+        <td><%= @carriage.number %></td>
+        <td><%= @carriage.top_seats %></td>
+        <td><%= @carriage.bottom_seats %></td>
+        <td><%= @carriage.side_top_seats %></td>
+        <td><%= @carriage.side_bottom_seats %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

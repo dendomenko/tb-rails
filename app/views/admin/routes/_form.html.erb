@@ -1,17 +1,13 @@
 <%= form_for [:admin, @route] do |form| %>
 <%= render 'common/errors', resource: @route %>
-
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: 'form-control' %>
   </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :station_ids %>
-    <%= form.collection_select :station_ids, Station.all, :id, :name, { include_hidden: false }, { multiple: true } %>
+    <%= form.collection_select :station_ids, Station.all, :id, :name, { include_hidden: false }, { multiple: true, class: 'form-control' } %>
   </div>
-
   <div class="actions">
     <%= form.submit t('.submit', action: @route.new_record? ? 'Создать' : 'Изменить') %>
   </div>

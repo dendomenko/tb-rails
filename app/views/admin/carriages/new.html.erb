@@ -1,33 +1,41 @@
-<h1>New Carriage</h1>
-<%= form_for [:admin, @train, @carriage.becomes(Carriage)] do |f| %>
-<%= render 'common/errors', resource: @carriage %>
+<div class="container">
+  <h1 class="text-center">New Carriage</h1>
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <%= form_for [:admin, @train, @carriage.becomes(Carriage)] do |f| %>
+        <%= render 'common/errors', resource: @carriage %>
 
-  <div class="field">
-    <%= f.label :type %><br>
-    <%= f.select :type, Carriage.types.map {|r| [r.underscore.humanize, r.camelcase]} %> 
-  </div>
+          <div class="form-group">
+            <%= f.label :type %><br>
+            <%= f.select :type, Carriage.types.map {|r| [r.underscore.humanize, r.camelcase]}, {}, class: 'form-control' %> 
+          </div>
 
-  <div class="field">
-    <%= f.label :top_seats %><br>
-    <%= f.number_field :top_seats %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :bottom_seats %><br>
-    <%= f.number_field :bottom_seats %>
-  </div>
+          <div class="form-group">
+            <%= f.label :top_seats %>
+            <%= f.number_field :top_seats, class: 'form-control' %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.label :bottom_seats %>
+            <%= f.number_field :bottom_seats, class: 'form-control' %>
+          </div>
 
-  <div class="field">
-    <%= f.label :side_top_seats %><br>
-    <%= f.number_field :side_top_seats %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :side_bottom_seats %><br>
-    <%= f.number_field :side_bottom_seats %>
-  </div>
+          <div class="form-group">
+            <%= f.label :side_top_seats %>
+            <%= f.number_field :side_top_seats, class: 'form-control' %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.label :side_bottom_seats %>
+            <%= f.number_field :side_bottom_seats, class: 'form-control' %>
+          </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+          <div class="actions">
+            <%= f.submit class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-md-3"></div>
+    </div>
+</div>

@@ -1,54 +1,53 @@
-<p>
-  <strong>Name:</strong>
-  <%= @route.name %>
-</p>
+<div class="container">
+  <div class="card" style="width: 50rem;">
+    <div class="card-body">
+      <h5 class="card-title"><strong>Name: </strong><%= @route.name %></h5>
+      <div class="card-header">
+        <strong>Trains list:</strong>
+      </div>
+      <ul class="list-group list-group-flush">
+        <% @route.trains.each do |train|%>
+          <li class="list-group-item"><%= link_to train.number, [:admin, train] %></li>
+        <% end %>
+      </ul>
+      <p>
+        <strong>Stations</strong>
+        <% if @route.stations.present? %>
+          <table>
+            <thead>
+            <tr>
+              <td width="100px">Name</td>
+              <td>Number</td>
+              <td>Arrival time</td>
+              <td>Departure time</td>
+            </tr>
+            </thead>
+            <tbody>
+            <% @route.stations.order_by_number.each do |station| %>
+                <tr>
+                <%= form_tag update_number_admin_station_path(station), method: :patch do %>   
+                  <td><%= station.name %></td>                     
+                  <td>              
+                    <%= number_field_tag :number, station.route_data(@route, :number) %>
+                    <%= hidden_field_tag :route_id, @route.id %>    
+                  </td>
+                  <td> <%= time_field_tag :arrival_time, station.route_data(@route, :arrival_time) %> </td>
+                  <td> <%= time_field_tag :departure_time, station.route_data(@route, :departure_time) %> </td>
+                  <td> <%= submit_tag "Change" %>  </td>
+                <% end %>          
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+        <% else %>
+          No stations
+        <% end %>
+      </p>
 
-<p>
-  <strong>Trains</strong>
-  <% if @route.trains.present? %>
-    <ul>
-      <% @route.trains.each do |train|%>
-        <li><%= link_to train.number, [:admin, train] %></li>
-      <% end %>
-    </ul>
-  <% else %>
-    No trains
-  <% end %>
-</p>
+      <%= link_to 'Edit', edit_admin_route_path(@route) %> |
+      <%= link_to 'Back', admin_routes_path %>
+    </div>
+  </div>
+<div>
 
-<p>
-  <strong>Stations</strong>
-  <% if @route.stations.present? %>
-    <table>
-      <thead>
-      <tr>
-        <td width="100px">Name</td>
-        <td>Number</td>
-        <td>Arrival time</td>
-        <td>Departure time</td>
-      </tr>
-      </thead>
-      <tbody>
-      <% @route.stations.order_by_number.each do |station| %>
-          <tr>
-          <%= form_tag update_number_admin_station_path(station), method: :patch do %>   
-            <td><%= station.name %></td>                     
-            <td>              
-              <%= number_field_tag :number, station.route_data(@route, :number) %>
-              <%= hidden_field_tag :route_id, @route.id %>    
-            </td>
-            <td> <%= time_field_tag :arrival_time, station.route_data(@route, :arrival_time) %> </td>
-            <td> <%= time_field_tag :departure_time, station.route_data(@route, :departure_time) %> </td>
-            <td> <%= submit_tag "Change" %>  </td>
-          <% end %>          
-          </tr>
-      <% end %>
-      </tbody>
-    </table>
-  <% else %>
-    No stations
-  <% end %>
-</p>
 
-<%= link_to 'Edit', edit_admin_route_path(@route) %> |
-<%= link_to 'Back', admin_routes_path %>
