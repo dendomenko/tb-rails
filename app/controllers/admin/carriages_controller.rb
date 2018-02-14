@@ -32,8 +32,8 @@ module Admin
 
     def carriage_params
       params.require(:carriage).permit(:type, :top_seats, :bottom_seats,
-                                      :side_top_seats,
-                                      :side_bottom_seats)
+                                       :side_top_seats,
+                                       :side_bottom_seats)
     end
   end
 end

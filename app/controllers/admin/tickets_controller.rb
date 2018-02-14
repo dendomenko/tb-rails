@@ -24,7 +24,7 @@ module Admin
 
     def update
       if @ticket.update(ticket_params)
-        redirect_to [:admin, @ticket], notice: 'Ticket was successfully updated.'
+        redirect_to [:admin, @ticket], notice: 'Ticket was successfully updated'
       else
         render :edit
       end
@@ -43,9 +43,9 @@ module Admin
 
     def ticket_params
       params.require(:ticket).permit(:first_name, :last_name,
-                                    :middle_name, :passport,
-                                    :start_station_id,
-                                    :end_station_id)
+                                     :middle_name, :passport,
+                                     :start_station_id,
+                                     :end_station_id)
     end
   end
 end

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Admin
   class TrainsController < Admin::BaseController
     before_action :set_train, only: %i[show edit update destroy]
