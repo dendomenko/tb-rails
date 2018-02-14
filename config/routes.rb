@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'registrations' }
+
   root to: 'searches#show'
   resource :search, only: :show do
     post '/', to: 'searches#search_route'
