@@ -1,49 +1,51 @@
 # frozen_string_literal: true
 
-class Admin::RoutesController < Admin::BaseController
-  before_action :set_route, only: %i[show edit update destroy]
+module Admin
+  class RoutesController < Admin::BaseController
+    before_action :set_route, only: %i[show edit update destroy]
 
-  def index
-    @routes = Route.all
-  end
-
-  def show; end
-
-  def new
-    @route = Route.new
-  end
-
-  def create
-    @route = Route.new(route_params)
-    if @route.save
-      redirect_to [:admin, @route], notice: 'Route was created.'
-    else
-      render :new
+    def index
+      @routes = Route.all
     end
-  end
 
-  def edit; end
+    def show; end
 
-  def update
-    if @route.update(route_params)
-      redirect_to [:admin, @route], notice: 'Route was updated'
-    else
-      render :edit
+    def new
+      @route = Route.new
     end
-  end
 
-  def destroy
-    @route.destroy
-    redirect_to admin_routes_url, notice: 'Route was successfully destroyed.'
-  end
+    def create
+      @route = Route.new(route_params)
+      if @route.save
+        redirect_to [:admin, @route], notice: 'Route was created.'
+      else
+        render :new
+      end
+    end
 
-  private
+    def edit; end
 
-  def set_route
-    @route = Route.find(params[:id])
-  end
+    def update
+      if @route.update(route_params)
+        redirect_to [:admin, @route], notice: 'Route was updated'
+      else
+        render :edit
+      end
+    end
 
-  def route_params
-    params.require(:route).permit(:name, station_ids: [])
+    def destroy
+      @route.destroy
+      redirect_to admin_routes_url, notice: 'Route was successfully destroyed.'
+    end
+
+    private
+
+    def set_route
+      @route = Route.find(params[:id])
+    end
+
+    def route_params
+      params.require(:route).permit(:name, station_ids: [])
+    end
   end
 end

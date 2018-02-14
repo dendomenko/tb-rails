@@ -1,50 +1,51 @@
 # frozen_string_literal: true
+module Admin
+  class TrainsController < Admin::BaseController
+    before_action :set_train, only: %i[show edit update destroy]
 
-class Admin::TrainsController < Admin::BaseController
-  before_action :set_train, only: %i[show edit update destroy]
-
-  def index
-    @trains = Train.all
-  end
-
-  def show; end
-
-  def new
-    @train = Train.new
-  end
-
-  def edit; end
-
-  def create
-    @train = Train.new(train_params)
-    @train.current_station = @train.route.first_station
-    if @train.save
-      redirect_to [:admin, @train], notice: 'Successfully created.'
-    else
-      render :new
+    def index
+      @trains = Train.all
     end
-  end
 
-  def update
-    if @train.update(train_params)
-      redirect_to [:admin, @train], notice: 'Successfully updated.'
-    else
-      render :edit
+    def show; end
+
+    def new
+      @train = Train.new
     end
-  end
 
-  def destroy
-    @train.destroy
-    redirect_to admin_trains_url, notice: 'Successfully destroyed.'
-  end
+    def edit; end
 
-  private
+    def create
+      @train = Train.new(train_params)
+      @train.current_station = @train.route.first_station
+      if @train.save
+        redirect_to [:admin, @train], notice: 'Successfully created.'
+      else
+        render :new
+      end
+    end
 
-  def set_train
-    @train = Train.find(params[:id])
-  end
+    def update
+      if @train.update(train_params)
+        redirect_to [:admin, @train], notice: 'Successfully updated.'
+      else
+        render :edit
+      end
+    end
 
-  def train_params
-    params.require(:train).permit(:number, :route_id, :tail)
+    def destroy
+      @train.destroy
+      redirect_to admin_trains_url, notice: 'Successfully destroyed.'
+    end
+
+    private
+
+    def set_train
+      @train = Train.find(params[:id])
+    end
+
+    def train_params
+      params.require(:train).permit(:number, :route_id, :tail)
+    end
   end
 end

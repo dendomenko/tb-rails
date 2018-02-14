@@ -1,0 +1,27 @@
+<%= form_for [:admin, @ticket] do |f| %>
+  
+  <div class="field">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :middle_name %>
+    <%= f.text_field :middle_name %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :passport %>
+    <%= f.text_field :passport %>
+  </div>
+    <%= f.hidden_field :start_station_id, value: @ticket.start_station_id %>
+    <%= f.hidden_field :end_station_id, value: @ticket.end_station_id %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

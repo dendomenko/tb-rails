@@ -27,9 +27,9 @@ Rails.application.routes.draw do
       resources :sleep_carriage, controller: 'carriages',
                                  type: 'SleepCarriage',
                                  only: %i[create new show]
-
-      resources :tickets, only: %i[create new show]
     end
+
+    resources :tickets, except: %i[new create]
 
     resources :stations do
       patch :update_number, on: :member
