@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TrainsController < ApplicationController
   before_action :set_train, only: %i[show edit update destroy]
 
@@ -15,6 +17,7 @@ class TrainsController < ApplicationController
 
   def create
     @train = Train.new(train_params)
+    @train.current_station = @train.route.first_station
     if @train.save
       redirect_to @train, notice: 'Successfully created.'
     else

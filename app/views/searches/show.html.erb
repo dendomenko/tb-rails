@@ -1,0 +1,11 @@
+<h1>Search tickets</h1>
+
+<div>
+  <%= form_tag search_path do %>
+    <%= label_tag :start_station_id%>
+    <%= select_tag :start_station_id, options_from_collection_for_select(@stations, :id, :name), :prompt => 'Select' %>
+    <%= label_tag :end_station_id%>
+    <%= select_tag :end_station_id, options_from_collection_for_select(@stations, :id, :name), :prompt => 'Select' %>
+    <%= submit_tag "Find" %>
+  <% end %>  
+</div>

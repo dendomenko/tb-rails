@@ -1,16 +1,10 @@
 <h1>New Carriage</h1>
-<%= form_for(@carriage.becomes(Carriage)) do |f| %>
+<%= form_for [@train, @carriage.becomes(Carriage)] do |f| %>
 <%= render 'common/errors', resource: @carriage %>
 
   <div class="field">
     <%= f.label :type %><br>
     <%= f.select :type, Carriage.types.map {|r| [r.underscore.humanize, r.camelcase]} %> 
-  </div>
-
-
-  <div class="field">
-    <%= f.label :train_id %><br>
-    <%= f.collection_select(:train_id, Train.all, :id, :number, :prompt => 'Select') %>
   </div>
 
   <div class="field">

@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class StationsController < ApplicationController
-  before_action :set_station, only: %i[show edit update destroy]
+  before_action :set_station, only: %i[show edit update destroy update_number]
 
   def index
     @stations = Station.all
@@ -33,6 +35,13 @@ class StationsController < ApplicationController
   def destroy
     @station.destroy
     redirect_to stations_url, notice: 'Station was successfully destroyed'
+  end
+
+  def update_number
+    @route = Route.find(params[:route_id])
+    @station.update_number(@route, params[:number], params[:arrival_time],
+                           params[:departure_time])
+    redirect_to @route
   end
 
   private

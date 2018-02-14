@@ -1,0 +1,28 @@
+<h1>Fill data for ticket</h1>
+<%= form_for [@train, @ticket] do |f| %>
+  
+  <div class="field">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :middle_name %>
+    <%= f.text_field :middle_name %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :passport %>
+    <%= f.text_field :passport %>
+  </div>
+    <%= f.hidden_field :start_station_id, value: @ids[1] %>
+    <%= f.hidden_field :end_station_id, value: @ids[0] %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

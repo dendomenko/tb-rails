@@ -29,8 +29,13 @@
 
 <ul> Carriages list
   <% @train.carriages.order_by_tail(@train.tail).each do |car| %>
-  <li> <%= link_to car.number, car %> </li>
+  <li> <%= link_to car.number, train_carriage_path(@train, car) %> </li>
   <% end %>
 </ul>
+
+<p>
+  <%= link_to "Add carriage", new_train_carriage_path(@train) %>
+</p>
+
 <%= link_to 'Edit', edit_train_path(@train) %> |
 <%= link_to 'Back', trains_path %>

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RoutesController < ApplicationController
   before_action :set_route, only: %i[show edit update destroy]
 
@@ -14,7 +16,7 @@ class RoutesController < ApplicationController
   def create
     @route = Route.new(route_params)
     if @route.save
-      redirect_to @route, notice: 'Route was  created.'
+      redirect_to @route, notice: 'Route was created.'
     else
       render :new
     end
