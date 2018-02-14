@@ -1,10 +1,15 @@
 # frozen_string_literal: true
 
 class TicketsController < ApplicationController
-  before_action :set_ticket, only: [:show]
+  before_action :authenticate_user!, only: [:index]
+  before_action :set_ticket, only: %i[show destroy]
   before_action :set_train, only: %i[new create]
 
   def show; end
+
+  def index
+    @tickets = current_user.tickets
+  end
 
   def create
     @ticket = @train.tickets.new(ticket_params)
@@ -19,6 +24,11 @@ class TicketsController < ApplicationController
   def new
     @ticket = Ticket.new
     @ids = [params[:end], params[:start]]
+  end
+
+  def destroy
+    @ticket.destroy
+    redirect_to tickets_url, notice: 'Successfully destroyed.'
   end
 
   private
