@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180213163234) do
+ActiveRecord::Schema.define(version: 20180214150850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20180213163234) do
     t.integer "side_top_seats"
     t.integer "side_bottom_seats"
     t.integer "number"
+    t.index ["id", "type"], name: "index_carriages_on_id_and_type"
     t.index ["train_id"], name: "index_carriages_on_train_id"
   end
 
@@ -40,6 +41,8 @@ ActiveRecord::Schema.define(version: 20180213163234) do
     t.integer "number"
     t.time "arrival_time"
     t.time "departure_time"
+    t.index ["route_id"], name: "index_stations_routes_on_route_id"
+    t.index ["station_id"], name: "index_stations_routes_on_station_id"
   end
 
   create_table "tickets", force: :cascade do |t|
