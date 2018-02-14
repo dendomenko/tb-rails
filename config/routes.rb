@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    resource :welcome, only: :show
+
     resources :trains do
       resources :carriages, only: %i[create new show]
       resources :coupe_carriage, controller: 'carriages',
