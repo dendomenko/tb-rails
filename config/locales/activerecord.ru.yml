@@ -10,8 +10,33 @@ ru:
     attributes:
       station:
         name: 'Название'
+      route:
+        name: 'Название'
+        station_ids: 'Станции'
       train:
         number: 'Номер'
+        tail: 'С хвоста'
+        route_id: 'Маршрут'
+      carriage:
+        top_seats: 'Верхние места'
+        bottom_seats: 'Нижние места'
+        side_top_seats: 'Боковые верхние места'
+        side_bottom_seats: 'Боковые нижние места'
+        number: 'Номер' 
+      user:
+        first_name: 'Имя'
+        last_name: 'Фамилия'
+        email: 'Эл. адрес'
+        password: 'Пароль'
+      ticket:
+        first_name: 'Имя'
+        last_name: 'Фамилия'
+        middle_name: 'Отчество'
+        passport: 'Номер пасспорта'        
+        email: 'Эл. адрес'
+        password: 'Пароль'
+        start_station: 'Станция отправления'
+        end_station: 'Станция прибытия'
     errors:
       messages:
         blank: 'не может быть пустым'

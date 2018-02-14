@@ -8,11 +8,11 @@
   </div>
 
   <div class="field">
-    <%= form.label :station_ids, "Station list" %>
+    <%= form.label :station_ids %>
     <%= form.collection_select :station_ids, Station.all, :id, :name, { include_hidden: false }, { multiple: true } %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit t('.submit', action: @route.new_record? ? 'Создать' : 'Изменить') %>
   </div>
 <% end %>

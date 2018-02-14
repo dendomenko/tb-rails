@@ -11,3 +11,13 @@ ru:
         title: 'Новая станция'
       form:
         submit: '%{action} станцию'
+    routes:
+      new:
+        title: 'Новый маршрут'
+      form:
+        submit: '%{action} маршрут'
+    trains:
+      new:
+        title: 'Новый поезд'
+      form:
+        submit: '%{action} поезд'
