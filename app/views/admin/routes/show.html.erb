@@ -8,7 +8,7 @@
   <% if @route.trains.present? %>
     <ul>
       <% @route.trains.each do |train|%>
-        <li><%= link_to train.number, train %></li>
+        <li><%= link_to train.number, [:admin, train] %></li>
       <% end %>
     </ul>
   <% else %>
