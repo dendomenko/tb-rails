@@ -1,0 +1,21 @@
+<h1> All tickets</h1>
+
+<% if @tickets.present? %>
+<table>
+  <thead>
+    <tr>
+      <th>Train number</th>
+      <th>Name</th>
+      <th>Departure</th>
+      <th>Arrival</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @tickets %>
+  </tbody>
+</table>
+<% else %>
+<h3> You have not tickets yes<h3>
+<% end %>

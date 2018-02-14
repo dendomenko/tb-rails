@@ -9,4 +9,8 @@ class Ticket < ApplicationRecord
   belongs_to :end_station, class_name: 'Station', foreign_key: 'end_station_id'
 
   validates :first_name, :last_name, :middle_name, :passport, presence: true
+
+  def full_name
+    "#{first_name} #{last_name} #{middle_name}"
+  end
 end

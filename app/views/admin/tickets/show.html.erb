@@ -1,0 +1,24 @@
+<h1>TICKET INFO</h1>
+<div>
+  <p><strong>First name: </strong><%= @ticket.first_name %></p>
+</div>
+
+<div>
+  <p><strong>Last name: </strong><%= @ticket.last_name %></p>
+</div>
+
+<div>
+  <p><strong>Middle name: </strong><%= @ticket.middle_name %></p>
+</div>
+
+<div>
+  <p><strong>Passport: </strong><%= @ticket.passport %></p>
+</div>
+
+<div>
+  <p><strong>Departure: </strong><%= @ticket.start_station.name %></p>
+</div>
+
+<div>
+  <p><strong>Arrival: </strong><%= @ticket.end_station.name %></p>
+</div>
