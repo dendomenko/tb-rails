@@ -9,7 +9,7 @@ class TicketsController < ApplicationController
   def create
     @ticket = @train.tickets.new(ticket_params)
     @ticket.user = current_user
-    if @ticket.save!
+    if @ticket.save
       redirect_to [@train, @ticket]
     else
       render :new

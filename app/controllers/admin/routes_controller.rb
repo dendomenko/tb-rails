@@ -15,7 +15,7 @@ class Admin::RoutesController < Admin::BaseController
 
   def create
     @route = Route.new(route_params)
-    if @route.save!
+    if @route.save
       redirect_to [:admin, @route], notice: 'Route was created.'
     else
       render :new
