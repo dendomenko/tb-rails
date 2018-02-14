@@ -15,7 +15,7 @@ class TicketsController < ApplicationController
     @ticket = @train.tickets.new(ticket_params)
     @ticket.user = current_user
     if @ticket.save
-      redirect_to [@train, @ticket]
+      redirect_to @ticket
     else
       render :new
     end
