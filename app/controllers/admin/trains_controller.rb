@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Admin::TrainsController < ApplicatioAdmin::BaseControllernController
+class Admin::TrainsController < Admin::BaseController
   before_action :set_train, only: %i[show edit update destroy]
 
   def index
@@ -19,7 +19,7 @@ class Admin::TrainsController < ApplicatioAdmin::BaseControllernController
     @train = Train.new(train_params)
     @train.current_station = @train.route.first_station
     if @train.save
-      redirect_to @train, notice: 'Successfully created.'
+      redirect_to [:admin, @train], notice: 'Successfully created.'
     else
       render :new
     end
@@ -27,7 +27,7 @@ class Admin::TrainsController < ApplicatioAdmin::BaseControllernController
 
   def update
     if @train.update(train_params)
-      redirect_to @train, notice: 'Successfully updated.'
+      redirect_to [:admin, @train], notice: 'Successfully updated.'
     else
       render :edit
     end
@@ -35,7 +35,7 @@ class Admin::TrainsController < ApplicatioAdmin::BaseControllernController
 
   def destroy
     @train.destroy
-    redirect_to trains_url, notice: 'Successfully destroyed.'
+    redirect_to admin_trains_url, notice: 'Successfully destroyed.'
   end
 
   private
