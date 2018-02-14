@@ -8,7 +8,8 @@ class Ticket < ApplicationRecord
                              foreign_key: 'start_station_id'
   belongs_to :end_station, class_name: 'Station', foreign_key: 'end_station_id'
 
-  after_create :send_notification
+  after_create :buy_notification
+  around_destroy :destroy_notification
 
   validates :first_name, :last_name, :middle_name, :passport, presence: true
 
@@ -20,7 +21,11 @@ class Ticket < ApplicationRecord
     "#{start_station.name} - #{end_station.name}"
   end
 
-  def send_notification
+  def buy_notification
     TicketsMailer.buy_ticket(self.user, self).deliver_now
+  end
+
+  def destroy_notification
+    TicketsMailer.destroy_ticket(self.user, self).deliver_now
   end
 end

@@ -4,4 +4,10 @@ class TicketsMailer < ApplicationMailer
     @ticket = ticket
     mail(to: user.email, subject: 'Вы купили билет')
   end
+
+  def destroy_ticket(user, ticket)
+    @user = user
+    @ticket = ticket
+    mail(to: user.email, subject: 'Ваш билет был отменен')
+  end
 end
