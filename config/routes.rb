@@ -8,10 +8,10 @@ Rails.application.routes.draw do
     post '/', to: 'searches#search_route'
   end
   
-  resources :tickets, only: [:index]
+  resources :tickets, only: %i[index show]
 
   resources :trains, only: [] do
-    resources :tickets, except: %i[index edit update]
+    resources :tickets, except: %i[show index edit update]
   end
 
   namespace :admin do
