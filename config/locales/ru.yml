@@ -1,0 +1,29 @@
+ru:
+  error:
+    stations_count: 'Количество станций на маршруте должно быть больше 2х'
+  common:
+    back: 'Назад'
+    edit: 'Редактировать'
+    errors: 'При заполнении формы возникли ошибки'
+  admin:
+    stations:
+      new:
+        title: 'Новая станция'
+      form:
+        submit: '%{action} станцию'
+    routes:
+      new:
+        title: 'Новый маршрут'
+      form:
+        submit: '%{action} маршрут'
+    trains:
+      new:
+        title: 'Новый поезд'
+      form:
+        submit: '%{action} поезд'
+  menu:
+    new_article: "Добавить статью"
+    languages:
+      lang: "Язык"
+      ru: "Русский"
+      en: "Английский"

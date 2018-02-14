@@ -30,4 +30,30 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  error:
+    stations_count: 'Stations number must be > 2'
+  common:
+    back: 'Back'
+    edit: 'Edit'
+    errors: 'Some errors in form'
+  admin:
+    stations:
+      new:
+        title: 'New station'
+      form:
+        submit: '%{action} station'
+    routes:
+      new:
+        title: 'New route'
+      form:
+        submit: '%{action} route'
+    trains:
+      new:
+        title: 'New train'
+      form:
+        submit: '%{action} train'
+  menu:
+    languages:
+      lang: "Language"
+      ru: "Russian"
+      en: "English"

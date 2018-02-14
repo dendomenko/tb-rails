@@ -30,6 +30,6 @@ class Route < ApplicationRecord
   end
 
   def stations_count
-    errors.add(:base, 'Stations must be > 1') if stations.size < 2
+    errors.add(:base, I18n.t('error.stations_count')) if stations.size < 2
   end
 end

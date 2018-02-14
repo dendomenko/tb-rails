@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations' }
 
+  get '/change_locale/:locale', to: 'settings#change_locale', as: :change_locale
+  
   root to: 'searches#show'
   resource :search, only: :show do
     post '/', to: 'searches#search_route'
