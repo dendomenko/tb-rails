@@ -14,14 +14,13 @@ class Route < ApplicationRecord
     stations.first
   end
 
+  scope :find_by_station, lambda { |station_id|
+    joins(:stations).where(['stations.id = ? ', station_id])
+  }
+
   scope :find_by_stations, lambda { |start_station_id, end_station_id|
-    route_ids = joins(:stations_routes)
-                .where(['stations_routes.station_id = ? ', start_station_id])
-                .pluck(:route_id)
-    joins(:stations_routes)
-      .where(['stations_routes.station_id = ? ' \
-              'AND stations_routes.route_id IN (?)',
-              end_station_id, route_ids]).uniq
+    find_by_station(start_station_id) &
+      find_by_station(end_station_id)
   }
 
   private
