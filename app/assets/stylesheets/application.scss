@@ -32,8 +32,23 @@ body {
   background-color: #f5f5f5;
 }
 
+/* Centered card*/
 .card {
   margin: 0 auto; /* Added */
   float: none; /* Added */
   margin-bottom: 10px; /* Added */
+}
+
+/* table form*/
+div.table-form 
+{
+    display:table;
+}
+form.tr-form, div.tr-form
+{
+    display:table-row;
+}
+span.td-form
+{
+    display:table-cell;
 }
