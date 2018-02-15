@@ -27,7 +27,7 @@ module Admin
 
     def update
       if @station.update(station_params)
-        redirect_to [:admin, @station], notice: 'Successfully updated.'
+        redirect_to admin_stations_path, notice: 'Successfully updated.'
       else
         render :edit
       end
