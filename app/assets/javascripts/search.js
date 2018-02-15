@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).on('turbolinks:load', function(){
     $('.find').click(function(){
         start = $('#start_station_id').val();
         end = $('#end_station_id').val();

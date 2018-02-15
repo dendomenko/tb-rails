@@ -28,7 +28,7 @@ module Admin
 
     def update
       if @train.update(train_params)
-        redirect_to [:admin, @train], notice: 'Successfully updated.'
+        redirect_to admin_trains_path, notice: 'Successfully updated.'
       else
         render :edit
       end

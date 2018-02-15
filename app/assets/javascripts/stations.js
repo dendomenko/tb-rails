@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).on('turbolinks:load', function(){
     $('a.edit_station').click(function(e){
         e.preventDefault();
         station_id = $(this).data('stationId');
