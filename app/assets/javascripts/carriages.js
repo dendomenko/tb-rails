@@ -12,18 +12,29 @@ $(document).on('turbolinks:load', function(){
 function show_seats(type){
   switch (type) {
     case 'EconomCarriage':
-      $('.top_seats').show();
-      $('.bottom_seats').show();
-      $('.side_top_seats').show();
-      $('.side_bottom_seats').show();
+      show_econom();
       break;
     case 'CoupeCarriage':
-      $('.top_seats').show();    
-      $('.bottom_seats').show();
+      show_coupe();
       break;
     case 'SedentaryCarriage':
     case 'SleepCarriage':
-      $('.bottom_seats').show();
+    show_sleep_and_sedentary();
       break;
   }
+}
+
+function show_econom(){
+  show_coupe();
+  $('.side_top_seats').show();
+  $('.side_bottom_seats').show();
+}
+
+function show_coupe(){
+  show_sleep_and_sedentary();
+  $('.top_seats').show();
+}
+
+function show_sleep_and_sedentary(){
+  $('.bottom_seats').show();
 }
