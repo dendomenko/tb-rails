@@ -30,6 +30,6 @@ class Station < ApplicationRecord
   protected
 
   def station_route(route)
-    @station_route ||= stations_routes.where(route: route).first
+    stations_routes.where(route: route).first
   end
 end

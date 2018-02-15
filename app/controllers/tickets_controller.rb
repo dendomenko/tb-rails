@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TicketsController < ApplicationController
-  before_action :authenticate_user!, only: [:index]
+  before_action :authenticate_user!, only: [:index, :create]
   before_action :set_ticket, only: %i[show destroy]
   before_action :set_train, only: %i[new create]
 
@@ -17,7 +17,7 @@ class TicketsController < ApplicationController
     if @ticket.save
       redirect_to @ticket
     else
-      render :new
+      redirect_to search_path, notice: 'Sonething went wrong, try to buy again.'
     end
   end
 
